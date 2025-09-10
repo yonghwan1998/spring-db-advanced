@@ -53,13 +53,13 @@ public class JdbcTemplateItemRepositoryV2 implements ItemRepository {
 
     @Override
     public void update(Long itemId, ItemUpdateDto updateParam) {
-        String sql = "UPDATE item SET item_name=:itemName, price=:price, quantity=:quantity WHERE id=:itemId";
+        String sql = "UPDATE item SET item_name=:itemName, price=:price, quantity=:quantity WHERE id=:id";
 
         SqlParameterSource param = new MapSqlParameterSource()
                 .addValue("itemName", updateParam.getItemName())
                 .addValue("price", updateParam.getPrice())
                 .addValue("quantity", updateParam.getQuantity())
-                .addValue("itemId", itemId);
+                .addValue("id", itemId);
 
         template.update(sql, param);
     }
